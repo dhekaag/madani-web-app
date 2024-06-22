@@ -1,4 +1,4 @@
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantinex/mantine-header/styles.css";
 import { Poppins } from "next/font/google";

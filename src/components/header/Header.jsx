@@ -1,28 +1,29 @@
-import { useState } from "react";
-import { Container, Group, Burger, Title } from "@mantine/core";
+import { Burger, Container, Group, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import classes from "./Header.module.css";
 
 const links = [
-  { link: "/about", label: "Berita" },
-  { link: "/pricing", label: "Profil" },
-  { link: "/learn", label: "Layanan Publik" },
-  { link: "/community", label: "PPID" },
-  { link: "/gallery", label: "Gallery" },
+  { link: "/berita", label: "Berita" },
+  { link: "/profil", label: "Profil" },
+  { link: "/layanan-publik", label: "Layanan Publik" },
+  { link: "/lokasi", label: "Lokasi" },
 ];
 
 export function Header() {
+  const router = useRouter();
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState();
 
   const items = links.map((link) => (
     <a
       key={link.label}
       href={link.link}
       className={classes.link}
-      data-active={active === link.link || undefined}
       onClick={(event) => {
         event.preventDefault();
+        router.push(link.link);
         setActive(link.link);
       }}
     >
